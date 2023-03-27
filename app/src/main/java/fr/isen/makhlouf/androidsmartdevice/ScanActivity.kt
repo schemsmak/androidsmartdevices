@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import android.Manifest
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.makhlouf.androidsmartdevice.databinding.ActivityScanBinding
@@ -80,8 +81,23 @@ class ScanActivity : AppCompatActivity(){
         //TODO
     }
 
+    private fun requestPermissions() {
+        if(!allPermissionsGranted()){
+            startScan(bluetoothAdapter?.bluetoothLeScanner!!)
+        }
+        else{
+            requestPermissions(getAllPermissions(), 1)
+        }
+    }
+
     private fun scanBLEDevices(){
-        TODO("Not yet implemented")
+       val bluetoothLeScanner = bluetoothAdapter?.bluetoothLeScanner
+        if(bluetoothLeScanner!=null){
+            startScan(bluetoothLeScanner)
+        }
+        else{
+            scanDeviceWithPermissions()
+        }
     }
 
     private fun allPermissionsGranted(): Boolean {
@@ -93,8 +109,12 @@ val allPermissions = getAllPermissions()
     }
 
     private fun getAllPermissions(): Array<String> {
-        return arrayOf(Manifest.permission.BLUETOOTH_ADMIN)
-
+        return arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.BLUETOOTH_CONNECT,
+            Manifest.permission.BLUETOOTH_ADMIN,
+            Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+            Manifest.permission.BLUETOOTH)
     }
 
     //function who initilize the deviceslist
