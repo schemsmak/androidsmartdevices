@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import android.Manifest
+import android.os.Build
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.makhlouf.androidsmartdevice.databinding.ActivityScanBinding
@@ -109,12 +110,17 @@ val allPermissions = getAllPermissions()
     }
 
     private fun getAllPermissions(): Array<String> {
-        return arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.BLUETOOTH_CONNECT,
-            Manifest.permission.BLUETOOTH_ADMIN,
-            Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-            Manifest.permission.BLUETOOTH)
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.BLUETOOTH_CONNECT,
+                Manifest.permission.BLUETOOTH_ADMIN,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+                Manifest.permission.BLUETOOTH,
+                Manifest.permission.BLUETOOTH_SCAN)
+        } else {
+            TODO("VERSION.SDK_INT < S")
+        }
     }
 
     //function who initilize the deviceslist
