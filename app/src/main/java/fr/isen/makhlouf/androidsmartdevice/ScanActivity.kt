@@ -8,16 +8,10 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import android.Manifest
 import android.Manifest.permission.*
-import android.bluetooth.le.ScanCallback
-import android.bluetooth.le.ScanResult
 import android.os.Build
-import android.util.Log
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.makhlouf.androidsmartdevice.databinding.ActivityScanBinding
 
