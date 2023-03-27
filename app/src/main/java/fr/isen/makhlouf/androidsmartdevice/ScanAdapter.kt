@@ -1,5 +1,6 @@
 package fr.isen.makhlouf.androidsmartdevice
 
+import android.bluetooth.le.ScanResult
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,27 +31,18 @@ class ScanAdapter(private val devicesList: ArrayList<String>) :
         val deviceName: TextView = itemView.findViewById<TextView>(R.id.deviceName)
 
     }
-}
 
-
-/*class ScanAdapter(private val devicesList: ArrayList<ScanResult>) : RecyclerView.Adapter<ScanAdapter.ViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) {
-        val view = LayoutInflater.from(parent.context)
-        val binding = ActivityMainBinding.inflate(inflater, parent, false)
-
+    fun addDevice(device: ScanResult) {
+       if(!devicesList.contains(device.toString())) {
+           devicesList.add(device.toString())
+           notifyDataSetChanged()
+       }
     }
-    override fun getItemCount(): Int = devicesList.size
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
+    companion object {
+        fun addDevice(result: ScanResult) {
+            TODO("Not yet implemented")
+
+        }
     }
-    holder.deviceName.text = devicesList[position]
-    holder.deviceAddress.text = devicesList[position]
-
 }
-
-class ScanViewHolder(binding: ActivityMainBinding) : RecyclerView.ViewHolder(binding.root) {
-    val deviceName = binding.deviceName
-    val deviceAddress: TextView = binding.deviceAddress
-}
-}*/
