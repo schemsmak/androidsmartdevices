@@ -55,6 +55,7 @@ class ScanActivity : AppCompatActivity(){
         }
     }
     private fun startScan(bluetoothLeScanner: BluetoothLeScanner){
+
         if(bluetoothAdapter==null){
          Toast.makeText(this,"Bluetooth indisponible",Toast.LENGTH_SHORT).show()
             return
@@ -68,6 +69,8 @@ class ScanActivity : AppCompatActivity(){
                 togglePlayPauseAction()
                 initdevicesList()
             }
+
+
 
         }
         //TODO
@@ -92,12 +95,17 @@ class ScanActivity : AppCompatActivity(){
     }
 
     private fun scanBLEDevices(){
-       val bluetoothLeScanner = bluetoothAdapter?.bluetoothLeScanner
+        val bluetoothLeScanner = bluetoothAdapter?.bluetoothLeScanner
         if(bluetoothLeScanner!=null){
-            startScan(bluetoothLeScanner)
+            if(allPermissionsGranted()){
+                startScan(bluetoothLeScanner)
+            }
+            else{
+                requestPermissions()
+            }
         }
         else{
-            scanDeviceWithPermissions()
+            Toast.makeText(this,"Impossible de récupérer le scanner BLE",Toast.LENGTH_SHORT).show()
         }
     }
 
