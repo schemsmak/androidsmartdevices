@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#093C90"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     android:foregroundTint="#0A3D90">
 
     <TextView
@@ -33,20 +34,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
-    <Button
-        android:id="@+id/scanButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#3F51B5"
-        android:text="Scanner"
-        android:textColorHighlight="#3F51B5"
-        android:textColorLink="#3F51B5"
-        app:layout_constraintEnd_toEndOf="@+id/descriptionTextView"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="98dp"
@@ -56,5 +43,21 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
         app:srcCompat="@drawable/bluetooth_1lb" />
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="252dp"
+        android:background="#0A3D90"
+        android:backgroundTint="#0A3D90"
+        android:text="scanner"
+        app:iconTint="#0A3D90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/descriptionTextView"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
+        app:rippleColor="#0A3D90"
+        app:strokeColor="#093C8F" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

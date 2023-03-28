@@ -7,18 +7,22 @@ import android.util.Log
 import fr.isen.makhlouf.androidsmartdevice.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.scanButton.setOnClickListener{
-            startActivity(Intent(this, ScanActivity::class.java))}
 
 
+        binding.buttonStart.setOnClickListener {
+            val intent = Intent(this, ScanActivity::class.java)
+            startActivity(intent)
+        }
 
     }
+
 
     override fun onStart() {
         super.onStart()

@@ -1,48 +1,71 @@
 package fr.isen.makhlouf.androidsmartdevice
 
+import android.annotation.SuppressLint
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.le.ScanResult
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import fr.isen.makhlouf.androidsmartdevice.databinding.ScanCellBinding
 
 
-
-class ScanAdapter(private val devicesList: ArrayList<String>) :
+class ScanAdapter(var devices: ArrayList<android.bluetooth.BluetoothDevice>, var onDeviceClickListener:(android.bluetooth.BluetoothDevice)->Unit ) :
     RecyclerView.Adapter<ScanAdapter.ScanViewHolder>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.scan_item, parent, false)
-        return ScanViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ScanCellBinding.inflate(inflater, parent, false)
+        return ScanViewHolder(binding)
     }
-
-    override fun onBindViewHolder(holder: ScanViewHolder, position: Int) {
-        holder.deviceName.text = devicesList[position]
-
-    }
-
 
     override fun getItemCount(): Int {
-        return devicesList.size
+        return devices.size
     }
 
-    inner class ScanViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val deviceName: TextView = itemView.findViewById<TextView>(R.id.deviceName)
+
+    @SuppressLint("MissingPermission")
+    override fun onBindViewHolder(holder: ScanViewHolder, position: Int) {
+        holder.deviceName.text = devices[position].name ?: "Inconnu"
+        holder.deviceAddress.text = devices[position].address
+        holder.itemView.setOnClickListener{
+            onDeviceClickListener(devices[position])
+        }
 
     }
-
-    fun addDevice(device: ScanResult) {
-       if(!devicesList.contains(device.toString())) {
-           devicesList.add(device.toString())
-           notifyDataSetChanged()
-       }
+    class ScanViewHolder(binding: ScanCellBinding) : RecyclerView.ViewHolder(binding.root) {
+        val deviceName=binding.nameDevice
+        val deviceAddress=binding.address
     }
 
-    companion object {
-        fun addDevice(result: ScanResult) {
-            TODO("Not yet implemented")
+    fun addDevice(device: android.bluetooth.BluetoothDevice){
+        var shouldAddDevice = true
+        devices.forEachIndexed { index, bluetoothDevice ->
+            if (bluetoothDevice.address == device.address){
+                devices[index]= device
+                shouldAddDevice = false
+            }
+        }
+        if (shouldAddDevice){
+            devices.add(device)
+        }
+    }
+
+}
+
+  /*  @SuppressLint("MissingPermission")
+        fun addDevice(device: BluetoothDevice, rssi: Int) {
+            if (!device.name.isNullOrBlank()) {
+                if (!MAC.contains(device.address)) {
+                    device_name.add(device.name)
+                    MAC.add(device.address)
+                    distance.add(rssi)
+                    size++
+                    Log.d("ScanAdapter", "Device added: ${device.name}")
+                }
+            }
 
         }
     }
-}
+    */
