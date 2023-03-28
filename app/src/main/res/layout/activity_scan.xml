@@ -8,35 +8,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/devicesList"
-        android:layout_width="304dp"
-        android:layout_height="304dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="312dp"
+        android:layout_width="390dp"
+        android:layout_height="605dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/scanButton"
-        android:layout_width="118dp"
-        android:layout_height="74dp"
-        android:backgroundTint="#FBFAFA"
+        android:layout_width="115dp"
+        android:layout_height="82dp"
+        android:backgroundTint="#FEFEFE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_play_circle_24"
         tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/scanTitle"
-        android:layout_width="284dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:text="Lancer le scan Ble"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/scanButton"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -48,5 +36,21 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scanTitle"
+        android:layout_width="294dp"
+        android:layout_height="41dp"
+        android:text="Scan des appareils BLE"
+        android:textAlignment="viewStart"
+        android:textColor="#0B0A0A"
+        android:textSize="20sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toStartOf="@+id/scanButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.372" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

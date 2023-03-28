@@ -9,11 +9,13 @@
     android:foregroundTint="#0A3D90">
 
     <TextView
-        android:id="@+id/scanTitle"
+        android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="240dp"
-        android:text="Scan des appareils BLE"
+        android:text="Bienvenue dans votre application SmartDevice"
+        android:textAlignment="center"
+        android:textColor="#070707"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
@@ -24,7 +26,8 @@
         android:id="@+id/descriptionTextView"
         android:layout_width="375dp"
         android:layout_height="80dp"
-        android:text="Bienvenue dans notre application de scan BLE ! Cette application vous permet de scanner les appareils BLE aux alentours de votre téléphone et d'afficher leurs informations. Pour commencer, appuyez sur le bouton &quot;Scanner&quot; ci-dessous."
+        android:background="#FEFEFE"
+        android:text=" Cette application vous permet de scanner les appareils BLE aux alentours de votre téléphone et d'afficher leurs informations. Pour commencer, appuyez sur le bouton &quot;Scanner&quot; ci-dessous."
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,19 +48,19 @@
         app:srcCompat="@drawable/bluetooth_1lb" />
 
     <Button
-        android:id="@+id/buttonStart"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
-        android:background="#0A3D90"
         android:backgroundTint="#0A3D90"
-        android:text="scanner"
-        app:iconTint="#0A3D90"
+        android:text="Scanner"
+        app:iconTint="#B57575"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/descriptionTextView"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
-        app:rippleColor="#0A3D90"
-        app:strokeColor="#093C8F" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+        app:layout_constraintVertical_bias="0.179"
+        app:rippleColor="#0A3D8F"
+        app:strokeColor="#0A3C8E" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,6 +29,7 @@ class ScanAdapter(var devices: ArrayList<android.bluetooth.BluetoothDevice>, var
     override fun onBindViewHolder(holder: ScanViewHolder, position: Int) {
         holder.deviceName.text = devices[position].name ?: "Inconnu"
         holder.deviceAddress.text = devices[position].address
+        //holder.distanceNumber.text = devices[position].distance.
         holder.itemView.setOnClickListener{
             onDeviceClickListener(devices[position])
         }
