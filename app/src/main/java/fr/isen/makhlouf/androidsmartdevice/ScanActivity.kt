@@ -79,6 +79,12 @@ class ScanActivity : AppCompatActivity(){
 
         }
         //binding.InstructionToStart.setOnClickListener{togglePlayPauseAction()}
+        adapter = ScanAdapter(arrayListOf()){
+            val intent = Intent(this, DetailsActivity::class.java)
+            intent.putExtra("device",it)
+            startActivity(intent)
+        }
+        binding.devicesList.adapter= adapter
 
     }
 
