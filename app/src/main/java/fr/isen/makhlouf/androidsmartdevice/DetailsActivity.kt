@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import fr.isen.makhlouf.androidsmartdevice.databinding.ActivityDetailsBinding
 import fr.isen.makhlouf.androidsmartdevice.databinding.ScanCellBinding
+
 class DetailsActivity : AppCompatActivity() {
 
     private lateinit var loader: ProgressBar
@@ -56,43 +57,45 @@ class DetailsActivity : AppCompatActivity() {
             }
         }
         val bluetoothGatt = device.connectGatt(this, false, gattCallback)
+        bluetoothGatt.connect()
         loader.visibility = View.VISIBLE
     }
 }
 
+
 /*
 
 class DetailsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDetailsBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
-        val bluetoothDevice: BluetoothDevice? = intent.getParcelableExtra("device")
-        /*   val bluetoothGatt = bluetoothDevice?.connectGatt(this, false, BluetoothGattCallback)
-        bluetoothGatt?.connect()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    bluettoothGatt?.close()
-    }
-    private val bluetoothGattCallback = object : BluetoothGattCallback() {
-        override fun onConnectionStateChange(gatt: BluetoothGatt?, status: Int, newState: Int) {
-            if (newState == BluetoothProfile.STATE_CONNECTED) {
-               runOnUiThread{
-               displayContentConnected()
-            }
-            }
-}
-    private fun displayContentConnected (){
-    binding.detailTitleLoader.text = getString(R.string.device_led_text)
-    binding.detailLoader.isVisible=false
-    binding.led1.isVisible=true
+private lateinit var binding: ActivityDetailsBinding
+override fun onCreate(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+setContentView(R.layout.activity_details)
+val bluetoothDevice: BluetoothDevice? = intent.getParcelableExtra("device")
+/*   val bluetoothGatt = bluetoothDevice?.connectGatt(this, false, BluetoothGattCallback)
+bluetoothGatt?.connect()
 }
 
+override fun onStop() {
+super.onStop()
+bluettoothGatt?.close()
+}
+private val bluetoothGattCallback = object : BluetoothGattCallback() {
+override fun onConnectionStateChange(gatt: BluetoothGatt?, status: Int, newState: Int) {
+    if (newState == BluetoothProfile.STATE_CONNECTED) {
+       runOnUiThread{
+       displayContentConnected()
     }
+    }
+}
+private fun displayContentConnected (){
+binding.detailTitleLoader.text = getString(R.string.device_led_text)
+binding.detailLoader.isVisible=false
+binding.led1.isVisible=true
+}
+
+}
 }
 */
-    }
+}
 }
 */

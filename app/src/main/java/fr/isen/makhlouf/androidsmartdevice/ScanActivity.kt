@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.widget.Toast
 import android.Manifest.permission.*
 import android.annotation.SuppressLint
-import android.bluetooth.BluetoothDevice
 import android.bluetooth.le.ScanCallback
 import android.bluetooth.le.ScanResult
 import android.content.Intent
@@ -57,7 +56,8 @@ class ScanActivity : AppCompatActivity(){
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             super.onScanResult(callbackType, result)
             Log.d("scan", "result: $result")
-            adapter.addDevice(result.device)
+            result.rssi
+            adapter.addDevice(result.device, result.rssi)
             adapter.notifyDataSetChanged()
 
         }

@@ -2,7 +2,6 @@ package fr.isen.makhlouf.androidsmartdevice
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
-import android.bluetooth.le.ScanResult
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -40,20 +39,31 @@ class ScanAdapter(var devices: ArrayList<android.bluetooth.BluetoothDevice>, var
         val deviceAddress=binding.address
     }
 
-    fun addDevice(device: android.bluetooth.BluetoothDevice){
+
+    @SuppressLint("MissingPermission")
+    fun addDevice(device: android.bluetooth.BluetoothDevice, rssi: Int) {
+        var device_name: ArrayList<String> = ArrayList()
+        var MAC: ArrayList<String> = ArrayList()
+        var distance: ArrayList<Int> = ArrayList()
+        var size: Int = 0
         var shouldAddDevice = true
-        devices.forEachIndexed { index, bluetoothDevice ->
-            if (bluetoothDevice.address == device.address){
-                devices[index]= device
-                shouldAddDevice = false
+        if (!device.name.isNullOrBlank()) {
+            if (!MAC.contains(device.address)) {
+                device_name.add(device.name)
+                MAC.add(device.address)
+                distance.add(rssi) // Add the rssi value here
+                size++
+                Log.d("Device", "${device.name} + $MAC")
             }
         }
+
         if (shouldAddDevice){
             devices.add(device)
         }
     }
 
-}
+    }
+
 
   /*  @SuppressLint("MissingPermission")
         fun addDevice(device: BluetoothDevice, rssi: Int) {

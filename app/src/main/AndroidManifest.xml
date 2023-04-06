@@ -5,16 +5,18 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED"
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_PRIVILEGED"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
     <uses-feature
         android:name="android.hardware.bluetooth_le"
-        android:required="true"
-        />
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -24,6 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidsmartdevice"
         tools:targetApi="31">
+        <activity
+            android:name=".DeviceControlActivity"
+            android:exported="false" />
         <activity
             android:name=".DetailsActivity"
             android:exported="false" />
