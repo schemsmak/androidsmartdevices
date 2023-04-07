@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BluetoothConnect">
+
+    <ImageView
+        android:id="@+id/led3"
+        android:layout_width="89dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="283dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="313dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/led2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/led" />
+
+    <ImageView
+        android:id="@+id/led2"
+        android:layout_width="89dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="283dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="313dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/led3"
+        app:layout_constraintStart_toEndOf="@+id/led1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/led" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BLE"
+        android:textColor="#1D4D7A"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.114" />
+
+    <ImageView
+        android:id="@+id/led1"
+        android:layout_width="89dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="283dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="314dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/led2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/led" />
+
+    <TextView
+        android:id="@+id/info_led"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sélectionnez la LED que vous souhaitez allumer"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="led3,info_led,led2,led1" />
+
+    <TextView
+        android:id="@+id/titleled1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="80dp"
+        android:text="Led 1"
+        android:textColor="#0C0C0C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/titleLed2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/led1"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <TextView
+        android:id="@+id/titleLed2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Led 2"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/led2"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <TextView
+        android:id="@+id/titleLed3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="4dp"
+        android:shadowColor="#000000"
+        android:text="Led 3"
+        android:textColor="#020202"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/titleLed2"
+        app:layout_constraintTop_toBottomOf="@+id/led3"
+        app:layout_constraintVertical_bias="0.034" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

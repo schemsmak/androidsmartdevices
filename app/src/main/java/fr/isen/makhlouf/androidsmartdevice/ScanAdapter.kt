@@ -2,81 +2,72 @@ package fr.isen.makhlouf.androidsmartdevice
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothDevice
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import fr.isen.makhlouf.androidsmartdevice.databinding.ScanCellBinding
+import android.bluetooth.le.ScanResult
 
 
-class ScanAdapter(var devices: ArrayList<android.bluetooth.BluetoothDevice>, var onDeviceClickListener:(android.bluetooth.BluetoothDevice)->Unit ) :
-    RecyclerView.Adapter<ScanAdapter.ScanViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ScanCellBinding.inflate(inflater, parent, false)
-        return ScanViewHolder(binding)
+class ScanAdapter(private val deviceList: ArrayList<ScanResult>) :
+    RecyclerView.Adapter<ScanAdapter.DeviceViewHolder>() {
+
+    class DeviceViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val deviceName: TextView = view.findViewById(R.id.nameDevice)
+        val deviceAddress: TextView = view.findViewById(R.id.addressDevice)
     }
 
-    override fun getItemCount(): Int {
-        return devices.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.scan_cell, parent, false)
+        return DeviceViewHolder(view)
     }
-
 
     @SuppressLint("MissingPermission")
-    override fun onBindViewHolder(holder: ScanViewHolder, position: Int) {
-        holder.deviceName.text = devices[position].name ?: "Inconnu"
-        holder.deviceAddress.text = devices[position].address
-        //holder.distanceNumber.text = devices[position].distance.
-        holder.itemView.setOnClickListener{
-            onDeviceClickListener(devices[position])
-        }
+    override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
+        val device = deviceList[position].device
+        holder.deviceAddress.text = device.address
+        holder.deviceName.text = device.name
 
-    }
-    class ScanViewHolder(binding: ScanCellBinding) : RecyclerView.ViewHolder(binding.root) {
-        val deviceName=binding.nameDevice
-        val deviceAddress=binding.address
-    }
-
-
-    @SuppressLint("MissingPermission")
-    fun addDevice(device: android.bluetooth.BluetoothDevice, rssi: Int) {
-        var device_name: ArrayList<String> = ArrayList()
-        var MAC: ArrayList<String> = ArrayList()
-        var distance: ArrayList<Int> = ArrayList()
-        var size: Int = 0
-        var shouldAddDevice = true
-        if (!device.name.isNullOrBlank()) {
-            if (!MAC.contains(device.address)) {
-                device_name.add(device.name)
-                MAC.add(device.address)
-                distance.add(rssi) // Add the rssi value here
-                size++
-                Log.d("Device", "${device.name} + $MAC")
-            }
-        }
-
-        if (shouldAddDevice){
-            devices.add(device)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, BluetoothConnect::class.java)
+            intent.putExtra("device_name", device.name)
+            intent.putExtra("device_address", device.address)
+            holder.itemView.context.startActivity(intent)
         }
     }
 
-    }
+    override fun getItemCount(): Int = deviceList.size
 
-
-  /*  @SuppressLint("MissingPermission")
-        fun addDevice(device: BluetoothDevice, rssi: Int) {
-            if (!device.name.isNullOrBlank()) {
-                if (!MAC.contains(device.address)) {
-                    device_name.add(device.name)
-                    MAC.add(device.address)
-                    distance.add(rssi)
-                    size++
-                    Log.d("ScanAdapter", "Device added: ${device.name}")
-                }
-            }
-
+    fun addDevice(device: ScanResult) {
+        if (!deviceList.contains(device)) {
+            deviceList.add(device)
+            notifyDataSetChanged()
         }
     }
-    */
+
+    fun clearDevices() {
+        deviceList.clear()
+        notifyDataSetChanged()
+    }
+}
+
+
+
+/*  @SuppressLint("MissingPermission")
+      fun addDevice(device: BluetoothDevice, rssi: Int) {
+          if (!device.name.isNullOrBlank()) {
+              if (!MAC.contains(device.address)) {
+                  device_name.add(device.name)
+                  MAC.add(device.address)
+                  distance.add(rssi)
+                  size++
+                  Log.d("ScanAdapter", "Device added: ${device.name}")
+              }
+          }
+
+      }
+  }
+  */

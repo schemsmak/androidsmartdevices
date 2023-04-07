@@ -5,54 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/devicesList"
-        android:layout_width="390dp"
-        android:layout_height="605dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="12dp"
+    <TextView
+        android:id="@+id/scanTitle"
+        android:layout_width="166dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="45dp"
+        android:text="Scan BLE"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toStartOf="@+id/scanButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057" />
 
     <ImageButton
         android:id="@+id/scanButton"
         android:layout_width="115dp"
         android:layout_height="82dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#FEFEFE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_play_circle_24"
         tools:ignore="MissingConstraints" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="406dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="84dp"
-        android:foregroundTint="#1A456D"
-        android:progressTint="#1B4771"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listDevices"
+        android:layout_width="412dp"
+        android:layout_height="615dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/scanTitle"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/scanTitle"
-        android:layout_width="294dp"
-        android:layout_height="41dp"
-        android:text="Scan des appareils BLE"
-        android:textAlignment="viewStart"
-        android:textColor="#0B0A0A"
-        android:textSize="16sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toStartOf="@+id/scanButton"
-        app:layout_constraintHorizontal_bias="1.0"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="398dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/listDevices"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
