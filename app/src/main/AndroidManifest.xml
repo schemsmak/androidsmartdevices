@@ -36,9 +36,6 @@
             android:name=".ScanActivity"
             android:exported="false" />
         <activity
-            android:name=".ScanAdapter"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -10,13 +10,9 @@
         android:id="@+id/led3"
         android:layout_width="89dp"
         android:layout_height="135dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="283dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="313dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/led2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/led" />
 
@@ -24,13 +20,9 @@
         android:id="@+id/led2"
         android:layout_width="89dp"
         android:layout_height="135dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="283dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="313dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/led3"
-        app:layout_constraintStart_toEndOf="@+id/led1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/led3"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/led" />
 
@@ -51,12 +43,8 @@
         android:id="@+id/led1"
         android:layout_width="89dp"
         android:layout_height="135dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="283dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="314dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/led2"
+        app:layout_constraintEnd_toStartOf="@+id/led3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/led" />
@@ -113,7 +101,7 @@
         android:id="@+id/titleLed3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="92dp"
         android:layout_marginTop="4dp"
         android:shadowColor="#000000"
         android:text="Led 3"
@@ -121,6 +109,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/titleLed2"
         app:layout_constraintTop_toBottomOf="@+id/led3"
-        app:layout_constraintVertical_bias="0.034" />
+        app:layout_constraintVertical_bias="0.036" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
